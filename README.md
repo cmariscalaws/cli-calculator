@@ -83,8 +83,22 @@ uv sync
 
 ### 3. Run Locally
 
+#### Development (default)
+
 ```bash
-uv run fastapi dev app/main.py
+uv run uvicorn app.main.app --reload
+```
+
+#### Production
+
+```bash
+ENVIRONMENT=production uv run uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+#### Production with Custom Log Level
+
+```bash
+ENVIRONMENT=production LOG_LEVEL=WARNING uv run uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
 FastAPI will be available at: <http://localhost:8000>
@@ -94,6 +108,18 @@ FastAPI will be available at: <http://localhost:8000>
 ```bash
 docker build -t compound-interest .
 docker run -p 8000:8000 compound-interest
+```
+
+### 5. Run with Docker-Compose (Dev)
+
+```bash
+docker-compose up app-dev
+```
+
+### 6. Run with Docker-Compose (Prod)
+
+```bash
+docker-compose up app-prod
 ```
 
 ## 🔍 API Endpoints

@@ -1,6 +1,14 @@
 from fastapi import FastAPI
 from .routers import router
+from .config.logging_config import setup_logging
+from .config.settings import settings
 
-app = FastAPI(title="Compound Interest Calculator", description="Calculate the future value of an investment or the required interest rate to reach a future value")
+# Setup logging base on environment
+setup_logging(settings.ENVIRONMENT)
+
+app = FastAPI(
+    title=settings.API_TITLE, 
+    description=settings.API_DESCRIPTION
+)
 
 app.include_router(router)
