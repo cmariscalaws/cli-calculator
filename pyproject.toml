@@ -17,6 +17,7 @@ dependencies = [
 dev = [
     "pydantic>=2.11.7",
     "coverage>=7.6.1",
+    "httpx>=0.28.1",
 ]
 
 [tool.ruff]

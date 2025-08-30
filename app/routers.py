@@ -17,7 +17,7 @@ def future_value(request: FutureValueRequest) -> FutureValueResponse:
     
     try:
         future_value = calculate_future_value(request.P, request.R, request.N, request.T)
-        return FutureValueResponse(message=f"Future Value of {future_value} when starting with {request.P} compounded at {request.R} interest rate, {request.N} times per year over {request.T} years")
+        return FutureValueResponse(message=f"Future Value of {round(future_value)} when starting with {round(request.P)} compounded at {request.R} interest rate, {request.N} times per year over {request.T} years")
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -27,6 +27,6 @@ def future_value(request: FutureValueRequest) -> FutureValueResponse:
 def required_rate(request: RequiredRateRequest) -> RequiredRateResponse:
     try:
         required_rate = calculate_required_rate(request.FV, request.P, request.N, request.T)
-        return RequiredRateResponse(message=f"{required_rate}% is the required interest rate to grow {request.P} to {request.FV} if compounding {request.N} times per year over {request.T} years.")
+        return RequiredRateResponse(message=f"{round(required_rate * 100, 2)}% is the required interest rate to grow ${round(request.P)} to ${round(request.FV)} if compounding {request.N} times per year over {request.T} years.")
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
