@@ -25,6 +25,24 @@
             },
             "python": "${workspaceFolder}/.venv/bin/python",
             "justMyCode": false
+        },
+        {
+            "name": "Debug Services Tests",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "pytest",
+            "args": [
+                "tests/test_services.py::TestServices::test_calculate_future_value_basic",
+                "-v",
+                "-s"
+            ],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "ENVIRONMENT": "development"
+            },
+            "python": "${workspaceFolder}/.venv/bin/python",
+            "justMyCode": false
         }
     ]
 }

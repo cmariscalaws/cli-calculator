@@ -1,5 +1,3 @@
-import pytest
-import math
 from app.services import calculate_future_value, calculate_required_rate
 
 class TestServices:
