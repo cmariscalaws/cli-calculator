@@ -30,13 +30,13 @@ This project is designed for training purposes and demonstrates best practices i
 `FV = P * (1 + R/N) ** (N * T)`
 
 - `P`: Principal amount  
-- `R`: Annual interest rate (decimal, e.g., 0.0412 for 4.12%)  
+- `R`: Annual interest rate (decimal, e.g., 0.040753 for 4.08%)  
 - `N`: Compounding periods per year  
 - `T`: Total time in years  
 
 **Example Test Case**  
 
-- Input: `P=10000, R=0.0412, N=4, T=10`  
+- Input: `P=10000, R=0.040753, N=4, T=10`  
 
 - Output: `FV ≈ 15000`  
 
@@ -49,7 +49,7 @@ Solve for `R`.
 **Example Test Case**  
 
 - Input: `FV=15000, P=10000, N=4, T=10`  
-- Output: `R ≈ 0.0412 (≈ 4.12%)`
+- Output: `R ≈ 0.040753(≈ 4.08%)`
 
 ---
 
@@ -170,11 +170,24 @@ Response:
 }
 ```
 
-## 🧪 Running Tests
+## 🧪 Running All Tests
 
 ```bash
-pytest
+uv run pytest
 ```
+
+### Run Specific Test Function
+
+```bash
+uv run pytest tests/test_services.py::TestServices::test_calculate_future_value_basic -s --pdb
+```
+
+### Run All Tests in Test Class
+
+```bash
+uv run pytest tests/test_services.py -v -s
+```
+
 
 ## ✅ Code Quality
 
