@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 # Configure api rouer for application
 router = APIRouter()
 
+
 @router.post("/future-value", response_model=FutureValueResponse)
 def future_value(request: FutureValueRequest) -> FutureValueResponse:
     start_time = time.time()
@@ -36,8 +37,6 @@ def future_value(request: FutureValueRequest) -> FutureValueResponse:
         response_time = time.time() - start_time
         logger.error(f"Future-value calculation failed after {response_time:.4f} seconds: {str(e)}")
         raise HTTPException(status_code=400, detail=str(e))
-
-    return FutureValueResponse(message=f"Future Value of {calculate_future_value(request.P, request.R, request.N, request.T)} when starting with {request.P} compounded at {request.R} interest rate, {request.N} times per year over {request.T} years")
 
 @router.post("/required-rate", response_model=RequiredRateResponse)
 def required_rate(request: RequiredRateRequest) -> RequiredRateResponse:
