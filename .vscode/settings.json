@@ -1,4 +1,5 @@
 {
+    "debug.toolBarLocation": "commandCenter",
     "python.testing.pytestArgs": [
         "tests"
     ],
